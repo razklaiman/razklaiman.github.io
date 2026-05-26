@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>רז קליימן | פורטפוליו</title>
+    <!-- Google Fonts עבור פונט נקי ומודרני -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: #1f2833;
+            --text-color: #c5a059; /* צבע זהב קולנועי עדין לאלמנטים נבחרים */
+            --pure-white: #ffffff;
+            --gray-text: #95a5a6;
+        }
+
+        body {
+            font-family: 'Assistant', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--pure-white);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+        }
+
+        /* שורת ניווט */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: rgba(11, 12, 16, 0.95);
+            position: fixed;
+            width: 84%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav .logo span {
+            color: var(--text-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 25px;
+        }
+
+        nav ul li a {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--text-color);
+        }
+
+        /* אזור פתיחה קולנועי */
+        .hero {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 80px;
+            background: radial-gradient(circle, rgba(31,40,51,0.3) 0%, rgba(11,12,16,1) 70%);
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--text-color);
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: var(--gray-text);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        /* אזור שואוריל מרכזי */
+        .showreel-container {
+            max-width: 900px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* יחס 16:9 קלאסי */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 25px rgba(197, 160, 89, 0.1);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* גריד פרויקטים עבודות */
+        .projects-section {
+            max-width: 1100px;
+            margin: 0 auto 100px auto;
+            padding: 0 20px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1max));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.15);
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 200px;
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gray-text);
+            font-size: 14px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-tag {
+            color: var(--text-color);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .project-content h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
+
+        .project-content p {
+            color: var(--gray-text);
+            font-size: 15px;
+            margin: 0;
+        }
+
+        /* פוטר ויצירת קשר */
+        footer {
+            background-color: #060709;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-links {
+            margin-top: 20px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--pure-white);
+            border: 2px solid var(--text-color);
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        .footer-text {
+            margin-top: 40px;
+            color: rgba(255,255,255,0.3);
+            font-size: 14px;
+        }
+
+        /* התאמה למובייל */
+        @media (max-width: 768px) {
+            nav {
+                width: 92%;
+                padding: 15px 4%;
+            }
+            nav ul {
+                display: none; /* במובייל פשוט נשמור על הלוגו נקי בשלב זה */
+            }
+            .hero h1 {
+                font-size: 38px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ניווט -->
+    <nav>
+        <div class="logo">רז <span>קליימן</span></div>
+        <ul>
+            <li><a href="#showreel">שואוריל</a></li>
+            <li><a href="#projects">פרויקטים</a></li>
+            <li><a href="#contact">צור קשר</a></li>
+        </ul>
+    </nav>
+
+    <!-- אזור פתיחה -->
+    <section class="hero">
+        <h1>יוצר תוכן ו<span>עורך וידאו</span></h1>
+        <p>סטודנט לתקשורת, מפיק פודקאסטים ומתמחה בבניית קמפיינים ופתרונות וידאו מנצחים לניו-מדיה.</p>
+        <a href="#contact" class="contact-btn" style="background-color: var(--text-color); color: var(--bg-color);">בואו נדבר</a>
+    </section>
+
+    <!-- אזור שואוריל מרכזי -->
+    <section id="showreel" class="showreel-container">
+        <h2 class="section-title">Showreel 2026</h2>
+        <div class="video-wrapper">
+            <!-- החלף את הקישור הזה בקישור ההטמעה (Embed) של הסרטון שלך מיוטיוב או וימאו -->
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- פרויקטים ועבודות -->
+    <section id="projects" class="projects-section">
+        <h2 class="section-title">פרויקטים נבחרים</h2>
+        <div class="projects-grid">
+
+            <!-- כרטיס פרויקט 1 -->
+            <div class="project-card">
+                <!-- כאן אפשר להוסיף תמונת רקע באמצעות style="background-image: url('link')" -->
+                <div class="project-thumb">📷 פרויקט דוקומנטרי ספורט</div>
+                <div class="project-content">
+                    <span class="project-tag">צילום ועריכה</span>
+                    <h3>סרט דוקומנטרי קצר</h3>
+                    <p>הפקה ובימוי של פרויקט דוקו ספורטיבי המלווה שחקן כדורגל מקצועי, תוך שימוש בציוד קולנועי מתקדם ועריכה קצבית.</p>
+                </div>
+            </div>
+
+            <!-- כרטיס פרויקט 2 -->
+            <div class="project-card">
+                <div class="project-thumb">🎙️ הפקת פודקאסטים</div>
+                <div class="project-content">
+                    <span class="project-tag">אודיו ווידאו</span>
+                    <h3>פודקאסט ספורט ודיגיטל</h3>
+                    <p>חבר פאנל קבוע, שותף להפקה, עריכת סאונד והתאמת קטעי וידאו קצרים (רילס וטיקטוק) לרשתות החברתיות.</p>
+                </div>
+            </div>
+
+            <!-- כרטיס פרויקט 3 -->
+            <div class="project-card">
+                <div class="project-thumb">📱 קמפיין סושיאל ומדיה</div>
+                <div class="project-content">
+                    <span class="project-tag">קריאייטיב ואסטרטגיה</span>
+                    <h3>ניהול נוכחות דיגיטלית</h3>
+                    <p>בניית אסטרטגיית תוכן, יצירת אווטארים מבוססי AI, ואנימציות מיתוג עבור קמפיינים בניו-מדיה.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- פוטר ויצירת קשר -->
+    <footer id="contact">
+        <h2 class="section-title">מתכננים את הפרויקט הבא?</h2>
+        <p style="color: var(--gray-text); max-width: 500px; margin: 0 auto 30px auto;">אם אתם מחפשים עריכה חדה, הפקה דינמית או חשיבה קריאייטיבית מחוץ לקופסה – צרו קשר.</p>
+        <div class="contact-links">
+            <a href="mailto:your-email@gmail.com" class="contact-btn">שלחו מייל</a>
+            <a href="https://linkedin.com" target="_blank" class="contact-btn">LinkedIn</a>
+        </div>
+        <div class="footer-text">
+            &copy; 2026 רז קליימן. כל הזכויות שמורות.
+        </div>
+    </footer>
+
+</body>
+</html>
